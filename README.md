@@ -1,1 +1,1 @@
-# mySchool
+# Complete School API
