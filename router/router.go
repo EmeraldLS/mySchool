@@ -2,6 +2,7 @@ package router
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/mySchool/controller"
@@ -32,5 +33,9 @@ func RunSever() {
 			secured.DELETE("/students", controller.DeleteAllStudents)
 		}
 	}
-	r.Run(":8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	r.Run("0.0.0.0:" + port)
 }
